@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TPandroid1</string>
+    <string name="app_name">TP Android 1</string>
     <string name="surname">Nom</string>
     <string name="name">Prénom</string>
     <string name="formation">Formation</string>
