@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String COLON = " :";
     public static final LinearLayout.LayoutParams PARAMS_MATCH_HORIZONTAL = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
     public static final LinearLayout.LayoutParams PARAMS_WRAP = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+    public static final int PADDING_LEFT = 20;
+    public static final int PADDING_RIGHT= 20;
+    public static final int PADDING_TOP = 20;
+    public static final int PADDING_BOTTOM= 20;
     private LinearLayout layout;
 
     // surname
@@ -72,12 +76,15 @@ public class MainActivity extends AppCompatActivity {
         // init layout
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setPadding(PADDING_LEFT, 0, PADDING_RIGHT, 0);
 
         // surname
-        LinearLayout surnameLayout = new LinearLayout(this);
-        TextView surnameLabel = new TextView(this);
+        surnameLayout = new LinearLayout(this);
+        surnameLayout.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        surnameLabel = new TextView(this);
         surnameLabel.setText(getString(R.string.surname) + COLON);
-        EditText surnameText = new EditText(this);
+        surnameText = new EditText(this);
         surnameText.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         surnameLayout.addView(surnameLabel);
         surnameLayout.addView(surnameText);
@@ -85,10 +92,12 @@ public class MainActivity extends AppCompatActivity {
         layout.addView(surnameLayout);
 
         // name
-        LinearLayout nameLayout = new LinearLayout(this);
-        TextView nameLabel = new TextView(this);
+        nameLayout = new LinearLayout(this);
+        nameLayout.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        nameLabel = new TextView(this);
         nameLabel.setText(getString(R.string.name) + COLON);
-        EditText nameText = new EditText(this);
+        nameText = new EditText(this);
         nameText.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         nameLayout.addView(nameLabel);
         nameLayout.addView(nameText);
@@ -97,19 +106,23 @@ public class MainActivity extends AppCompatActivity {
 
         // formation
         // TODO using for on a resource array string
-        LinearLayout formationLayout = new LinearLayout(this);
-        TextView formationLabel = new TextView(this);
+        formationLayout = new LinearLayout(this);
+        formationLayout.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        formationLabel = new TextView(this);
         formationLabel.setText(getString(R.string.formation) + COLON);
         formationLabel.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
 
-        LinearLayout formationCheckLayout = new LinearLayout(this);
-        CheckBox englishCheck = new CheckBox(this);
+        formationCheckLayout = new LinearLayout(this);
+        formationCheckLayout.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        englishCheck = new CheckBox(this);
         englishCheck.setText(R.string.english);
-        CheckBox frenchCheck = new CheckBox(this);
+        frenchCheck = new CheckBox(this);
         frenchCheck.setText(R.string.french);
-        CheckBox italyCheck = new CheckBox(this);
+        italyCheck = new CheckBox(this);
         italyCheck.setText(R.string.italian);
-        CheckBox spainCheck = new CheckBox(this);
+        spainCheck = new CheckBox(this);
         spainCheck.setText(R.string.spanish);
         formationCheckLayout.addView(englishCheck);
         formationCheckLayout.addView(frenchCheck);
@@ -125,18 +138,22 @@ public class MainActivity extends AppCompatActivity {
 
         // marriage status
         // TODO using for on a resource array string
-        LinearLayout marriageLayout = new LinearLayout(this);
-        TextView marriageLabel = new TextView(this);
+        marriageLayout = new LinearLayout(this);
+        marriageLayout.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        marriageLabel = new TextView(this);
         marriageLabel.setText(getString(R.string.marriageStatus) + COLON);
         marriageLabel.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
-        RadioGroup marriageGroup = new RadioGroup(this);
-        RadioButton marriedRadio = new RadioButton(this);
+        marriageGroup = new RadioGroup(this);
+        marriageGroup.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        marriedRadio = new RadioButton(this);
         marriedRadio.setText(R.string.married);
-        RadioButton singleRadio = new RadioButton(this);
+        singleRadio = new RadioButton(this);
         singleRadio.setText(R.string.single);
-        RadioButton divorcedRadio = new RadioButton(this);
+        divorcedRadio = new RadioButton(this);
         divorcedRadio.setText(R.string.divorced);
-        RadioButton widowerRadio = new RadioButton(this);
+        widowerRadio = new RadioButton(this);
         widowerRadio.setText(R.string.widowner);
         marriageGroup.addView(marriedRadio);
         marriageGroup.addView(singleRadio);
@@ -153,11 +170,13 @@ public class MainActivity extends AppCompatActivity {
         // country model
         String[] countries = getResources().getStringArray(R.array.countries);
         // country
-        LinearLayout countryLayout = new LinearLayout(this);
-        TextView countryLabel = new TextView(this);
+        countryLayout = new LinearLayout(this);
+        countryLayout.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        countryLabel = new TextView(this);
         countryLabel.setText(getString(R.string.country) + COLON);
         countryLabel.setLayoutParams(PARAMS_WRAP);
-        Spinner countrySpinner = new Spinner(this);
+        countrySpinner = new Spinner(this);
         countrySpinner.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, countries));
         countrySpinner.setLayoutParams(PARAMS_WRAP);
         countryLayout.addView(countryLabel);
@@ -166,8 +185,10 @@ public class MainActivity extends AppCompatActivity {
         layout.addView(countryLayout);
 
         // date
-        LinearLayout dateLayout = new LinearLayout(this);
-        TextView dateLabel = new TextView(this);
+        dateLayout = new LinearLayout(this);
+        dateLayout.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
+
+        dateLabel = new TextView(this);
         dateLabel.setText("Date" + COLON);
         dateLayout.setLayoutParams(PARAMS_WRAP);
         dateText = new EditText(this);
