@@ -1,1 +1,36 @@
 = TRAVAUX PRATIQUES ANDROID 1
+
+== 1) Creez un projet android que l’on nomme TPandroid1 avec une empty activity
+https://github.com/gretandroid/thang-TPandroid1/tree/0fcb46adb5ed727f67a05fc3f65cd1f486b8369f
+
+== 2) Indiquez a quoi serve chacun des dossiers  et des fichiers suivants:
+
+=== AndroidManifest.xml?
+Le manifeste définit la structure et les métadonnées de votre application, ses composants et ses exigences.Votre manifeste comprend des nœuds pour chacune des activités, services, fournisseurs de contenu et récepteurs de diffusion qui composent votre application et, à l'aide des filtres d'intention et des autorisations, déterminez la manière dont ils interagissent entre eux et avec d'autres applications. Le manifeste est constitué d’une balise racine manifeste avec un attribut de package défini sur le nom unique du package du projet. Il devrait également inclure un attribut xmlns: android qui fournit plusieurs attributs système requis dans le fichier.
+
+=== Java?
+le dossier java sert a aceuillir les fichiers sources java.
+ Res?
+le dossier Res sert à aceuillir les fichiers de resources qui ne seront pas compilés.
+
+=== Drawable?
+le dossier Drawable sert à aceuillir les fichiers. +
+Une ressource Drawable est un concept général pour un élément graphique +
+qui peut être redimensionné.
+
+=== Layout?
+les mise en page d'interface utilisateur.
+
+=== Mipmap?
+le dossier mipmap sert a acceuillir les fichiers pour faire des icones resizable.
+
+=== Values?
+les valeur de chaine de caractere injectable par reference de son identifiant.
+
+=== gradle scripts?
+le gradle script sert à configurer et construire le projet android.
+
+== 3) Creez un émulateur de type pixel4, avec l’image nougat?
+
+
+== 4) EN UTILISANT DES LINEARLAYOUT REALISEZ L’ECRAN SUIVANT, ET INTERNATIONALISEZ l’APPLICATION AVEC UNE VERSION ANGLAISE
