@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TPandroid1</string>
-    <string name="surname">Surname</string>
-    <string name="name">Name</string>
+    <string name="surname">Nom</string>
+    <string name="name">Prénom</string>
     <string name="formation">Formation</string>
     <string name="marriageStatus">Marital Status</string>
     <string name="country">Country</string>
     <string-array name="countries">
         <item>France</item>
-        <item>England</item>
-        <item>Italy</item>
-        <item>Spain</item>
+        <item>Angleterre</item>
+        <item>Italie</item>
+        <item>Espagne</item>
     </string-array>
 </resources>
