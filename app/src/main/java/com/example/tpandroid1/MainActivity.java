@@ -4,23 +4,21 @@ import static android.widget.LinearLayout.LayoutParams.MATCH_PARENT;
 import static android.widget.LinearLayout.LayoutParams.WRAP_CONTENT;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     public static final String COLON = " :";
+    public static final LinearLayout.LayoutParams PARAMS_MATCH_HORIZONTAL = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
+    public static final LinearLayout.LayoutParams PARAMS_WRAP = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
     private LinearLayout layout;
 
     // surname
@@ -80,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
         TextView surnameLabel = new TextView(this);
         surnameLabel.setText(getString(R.string.surname) + COLON);
         EditText surnameText = new EditText(this);
-        surnameText.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        surnameText.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         surnameLayout.addView(surnameLabel);
         surnameLayout.addView(surnameText);
-        surnameLayout.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        surnameLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         layout.addView(surnameLayout);
 
         // name
@@ -91,53 +89,55 @@ public class MainActivity extends AppCompatActivity {
         TextView nameLabel = new TextView(this);
         nameLabel.setText(getString(R.string.name) + COLON);
         EditText nameText = new EditText(this);
-        nameText.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        nameText.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         nameLayout.addView(nameLabel);
         nameLayout.addView(nameText);
-        nameLayout.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        nameLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         layout.addView(nameLayout);
 
         // formation
+        // TODO using for on a resource array string
         LinearLayout formationLayout = new LinearLayout(this);
         TextView formationLabel = new TextView(this);
         formationLabel.setText(getString(R.string.formation) + COLON);
-        formationLabel.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        formationLabel.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
 
         LinearLayout formationCheckLayout = new LinearLayout(this);
         CheckBox englishCheck = new CheckBox(this);
-        englishCheck.setText("English");
+        englishCheck.setText(R.string.english);
         CheckBox frenchCheck = new CheckBox(this);
-        frenchCheck.setText("French");
+        frenchCheck.setText(R.string.french);
         CheckBox italyCheck = new CheckBox(this);
-        italyCheck.setText("Italian");
+        italyCheck.setText(R.string.italian);
         CheckBox spainCheck = new CheckBox(this);
-        spainCheck.setText("Spanish");
+        spainCheck.setText(R.string.spanish);
         formationCheckLayout.addView(englishCheck);
         formationCheckLayout.addView(frenchCheck);
         formationCheckLayout.addView(italyCheck);
         formationCheckLayout.addView(spainCheck);
-        formationCheckLayout.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        formationCheckLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
 
         formationLayout.addView(formationLabel);
         formationLayout.addView(formationCheckLayout);
-        formationLayout.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        formationLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         formationLayout.setOrientation(LinearLayout.VERTICAL);
         layout.addView(formationLayout);
 
         // marriage status
+        // TODO using for on a resource array string
         LinearLayout marriageLayout = new LinearLayout(this);
         TextView marriageLabel = new TextView(this);
         marriageLabel.setText(getString(R.string.marriageStatus) + COLON);
-        marriageLabel.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        marriageLabel.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         RadioGroup marriageGroup = new RadioGroup(this);
         RadioButton marriedRadio = new RadioButton(this);
-        marriedRadio.setText("Married");
+        marriedRadio.setText(R.string.married);
         RadioButton singleRadio = new RadioButton(this);
-        singleRadio.setText("Single");
+        singleRadio.setText(R.string.single);
         RadioButton divorcedRadio = new RadioButton(this);
-        divorcedRadio.setText("Divorced");
+        divorcedRadio.setText(R.string.divorced);
         RadioButton widowerRadio = new RadioButton(this);
-        widowerRadio.setText("Widowner");
+        widowerRadio.setText(R.string.widowner);
         marriageGroup.addView(marriedRadio);
         marriageGroup.addView(singleRadio);
         marriageGroup.addView(divorcedRadio);
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
         marriageLayout.addView(marriageLabel);
         marriageLayout.addView(marriageGroup);
-        marriageLayout.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        marriageLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         marriageLayout.setOrientation(LinearLayout.VERTICAL);
         layout.addView(marriageLayout);
 
@@ -156,25 +156,25 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout countryLayout = new LinearLayout(this);
         TextView countryLabel = new TextView(this);
         countryLabel.setText(getString(R.string.country) + COLON);
-        countryLabel.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        countryLabel.setLayoutParams(PARAMS_WRAP);
         Spinner countrySpinner = new Spinner(this);
         countrySpinner.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, countries));
-        countrySpinner.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        countrySpinner.setLayoutParams(PARAMS_WRAP);
         countryLayout.addView(countryLabel);
         countryLayout.addView(countrySpinner);
-        countryLayout.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        countryLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         layout.addView(countryLayout);
 
         // date
         LinearLayout dateLayout = new LinearLayout(this);
         TextView dateLabel = new TextView(this);
         dateLabel.setText("Date" + COLON);
-        dateLayout.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        dateLayout.setLayoutParams(PARAMS_WRAP);
         dateText = new EditText(this);
-        dateText.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        dateText.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         dateLayout.addView(dateLabel);
         dateLayout.addView(dateText);
-        dateLayout.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        dateLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
         dateLayout.setOrientation(LinearLayout.HORIZONTAL);
         layout.addView(dateLayout);
 

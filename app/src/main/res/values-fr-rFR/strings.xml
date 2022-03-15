@@ -4,8 +4,16 @@
     <string name="surname">Nom</string>
     <string name="name">Prénom</string>
     <string name="formation">Formation</string>
-    <string name="marriageStatus">Marital Status</string>
-    <string name="country">Country</string>
+    <string name="marriageStatus">Situation Familiale</string>
+    <string name="country">Pays</string>
+    <string name="english">Anglais</string>
+    <string name="french">Français</string>
+    <string name="italian">Italien</string>
+    <string name="spanish">Espagnol</string>
+    <string name="married">Marié</string>
+    <string name="single">Célibataire</string>
+    <string name="divorced">Divorcé</string>
+    <string name="widowner">Veuf</string>
     <string-array name="countries">
         <item>France</item>
         <item>Angleterre</item>
