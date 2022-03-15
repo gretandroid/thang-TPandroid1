@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TPandroid1</string>
+    <string-array name="countries">
+        <item>France</item>
+        <item>Spain</item>
+        <item>Italy</item>
+    </string-array>
 </resources>

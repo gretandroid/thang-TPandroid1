@@ -22,10 +22,10 @@ qui peut être redimensionné.
 les mise en page d'interface utilisateur.
 
 === Mipmap?
-le dossier mipmap sert a acceuillir les fichiers pour faire des icones resizable.
+le dossier mipmap sert à acceuillir les fichiers pour faire des icones resizable.
 
 === Values?
-les valeur de chaine de caractere injectable par reference de son identifiant.
+les valeur de chaine de caractere injectable par référence de son identifiant.
 
 === gradle scripts?
 le gradle script sert à configurer et construire le projet android.
