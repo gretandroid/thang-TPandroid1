@@ -20,90 +20,101 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout linearLayout;
+    private LinearLayout globalLayout;
 
-    TextView lastNameTextView;
-    TextView fistNameTextView;
-    EditText fistNameEditText;
-    EditText lastNameEditText;
+    // identification
+    private LinearLayout identificationLayout;
+    private TextView lastNameTextView;
+    private TextView fistNameTextView;
+    private EditText fistNameEditText;
+    private EditText lastNameEditText;
 
-    TextView formationTextView;
-    CheckBox germanCheckBox;
-    CheckBox englishCheckBox;
-    CheckBox frenchCheckBox;
-    CheckBox italianCheckBox;
+    // formation
+    private TextView formationTextView;
+    private CheckBox germanCheckBox;
+    private CheckBox englishCheckBox;
+    private CheckBox frenchCheckBox;
+    private CheckBox italianCheckBox;
 
-    TextView familySituationTextView;
-    RadioGroup familySituationRadioGroup;
-    RadioButton marriedRadioButton;
-    RadioButton singleRadioButton;
-    RadioButton divorcedRadioButton;
-    RadioButton widowerRadioButton;
+    // family situation
+    private TextView familySituationTextView;
+    private RadioGroup familySituationRadioGroup;
+    private RadioButton marriedRadioButton;
+    private RadioButton singleRadioButton;
+    private RadioButton divorcedRadioButton;
+    private RadioButton widowerRadioButton;
 
-    TextView countryListTextView;
-    Spinner countrySpinner;
-    ArrayAdapter countryArrayAdapter;
+    // country list
+    private TextView countryListTextView;
+    private Spinner countrySpinner;
+    private ArrayAdapter countryArrayAdapter;
 
-    TextView dateTextView;
-    EditText dateEditText;
+    // date
+    private TextView dateTextView;
+    private EditText dateEditText;
 
-    ImageView studentImageView;
+    // student image
+    private ImageView studentImageView;
 
-    LinearLayout.LayoutParams layoutParams;
+    // layout params
+    private LinearLayout.LayoutParams layoutParams;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        linearLayout = new LinearLayout(this);
+        globalLayout = new LinearLayout(this);
+        globalLayout.setOrientation(VERTICAL);
 
         //identification
+        LinearLayout identificationLayout = new LinearLayout(this);
         lastNameTextView = new TextView(this);
         lastNameTextView.setText("Nom");
-        linearLayout.addView(lastNameTextView);
+        identificationLayout.addView(lastNameTextView);
 
         lastNameEditText = new EditText(this);
-        linearLayout.addView(lastNameEditText);
+        globalLayout.addView(lastNameEditText);
 
         fistNameTextView = new TextView(this);
         fistNameTextView.setText("prénom");
-        linearLayout.addView(fistNameTextView);
+        globalLayout.addView(fistNameTextView);
 
         fistNameEditText = new EditText(this);
-        linearLayout.addView(fistNameEditText);
+        globalLayout.addView(fistNameEditText);
 
 
         //formation
         formationTextView = new TextView(this);
         formationTextView.setText("Formation");
-        linearLayout.addView(formationTextView);
+        globalLayout.addView(formationTextView);
 
         germanCheckBox = new CheckBox(this);
         germanCheckBox.setText("Allemand");
-        linearLayout.addView(germanCheckBox);
+        globalLayout.addView(germanCheckBox);
 
         englishCheckBox = new CheckBox(this);
         englishCheckBox.setText("Anglais");
-        linearLayout.addView(englishCheckBox);
+        globalLayout.addView(englishCheckBox);
 
         frenchCheckBox = new CheckBox(this);
         frenchCheckBox.setText("Français");
-        linearLayout.addView(frenchCheckBox);
+        globalLayout.addView(frenchCheckBox);
 
         italianCheckBox = new CheckBox(this);
         italianCheckBox.setText("Italien");
-        linearLayout.addView(italianCheckBox);
+        globalLayout.addView(italianCheckBox);
 
 
         //family situation
         familySituationTextView = new EditText(this);
         familySituationTextView.setText("Situation Familiale");
-        linearLayout.addView(familySituationTextView);
+        globalLayout.addView(familySituationTextView);
+
 
         familySituationRadioGroup = new RadioGroup(this);
         familySituationRadioGroup.setOrientation(HORIZONTAL);
-        linearLayout.addView(familySituationRadioGroup);
+        globalLayout.addView(familySituationRadioGroup);
 
         marriedRadioButton = new RadioButton(this);
         marriedRadioButton.setText("Marié");
@@ -125,28 +136,28 @@ public class MainActivity extends AppCompatActivity {
         //country
         countryListTextView = new TextView(this);
         countryListTextView.setText("Pays");
-        linearLayout.addView(countryListTextView);
+        globalLayout.addView(countryListTextView);
 
         countrySpinner = new Spinner(this);
         countryArrayAdapter = new ArrayAdapter(this,
                 simple_list_item_1,
                 getResources().getStringArray(countries));
         countrySpinner.setAdapter(countryArrayAdapter);
-        linearLayout.addView(countrySpinner);
+        globalLayout.addView(countrySpinner);
 
         //date
         dateTextView = new TextView(this);
         dateTextView.setText("Date");
-        linearLayout.addView(dateTextView);
+        globalLayout.addView(dateTextView);
         dateEditText = new EditText(this);
-        linearLayout.addView(dateEditText);
+        globalLayout.addView(dateEditText);
 
         //image
         studentImageView = new ImageView(this);
         studentImageView.setImageResource(student);
-        linearLayout.addView(studentImageView);
+        globalLayout.addView(studentImageView);
 
-        linearLayout.setOrientation(VERTICAL);
-        setContentView(linearLayout);
+
+        setContentView(globalLayout);
     }
 }
