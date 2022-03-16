@@ -5,6 +5,7 @@ import static android.widget.LinearLayout.LayoutParams.WRAP_CONTENT;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -268,6 +269,9 @@ public class MainActivity extends AppCompatActivity {
                         + SPACE + country;
 
                 Toast.makeText(getBaseContext(), "Saved" + SPACE + info, Toast.LENGTH_LONG).show();
+
+                // log debug
+                Log.d("Resultat", info);
 
             }
         });
