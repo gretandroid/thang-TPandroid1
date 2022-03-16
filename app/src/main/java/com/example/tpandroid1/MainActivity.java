@@ -5,7 +5,9 @@ import static android.widget.LinearLayout.LayoutParams.WRAP_CONTENT;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,7 +16,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+//public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
 public class MainActivity extends AppCompatActivity {
     public static final String COLON = " :";
     public static final LinearLayout.LayoutParams PARAMS_MATCH_HORIZONTAL = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
@@ -23,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int PADDING_RIGHT= 20;
     public static final int PADDING_TOP = 20;
     public static final int PADDING_BOTTOM= 20;
+    public static final String SPACE = " ";
+    public static final String EMPTY = "";
     private LinearLayout layout;
 
     // surname
@@ -65,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
     // image
     private ImageView imageView;
+
+    // Button
+    private Button sendButton;
+    private Button saveButton;
 
 
 
@@ -202,9 +215,78 @@ public class MainActivity extends AppCompatActivity {
         // image
         imageView = new ImageView(this);
         imageView.setImageResource(R.drawable.raw);
-        layout.addView(imageView);
+//        layout.addView(imageView);
+
+        // Buttons
+        sendButton = new Button(this);
+        sendButton.setText("Send");
+//        sendButton.setId((int)1);
+//        sendButton.setOnClickListener(this); // use MainActivity.onClick
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "Hello Send", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        layout.addView(sendButton);
+
+        saveButton = new Button(this);
+        saveButton.setText("Save");
+//        sendButton.setId((int)2);
+//        saveButton.setOnClickListener(this); // use MainActivity.onClick
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // name, surname
+                String surname = surnameText.getText().toString();
+                String name = nameText.getText().toString();
+
+                // formation choices
+                List<String> formationChoices = new ArrayList<>();
+                if (englishCheck.isChecked()) {
+                    formationChoices.add(englishCheck.getText().toString());
+                }
+                if (frenchCheck.isChecked()) {
+                    formationChoices.add(frenchCheck.getText().toString());
+                }
+                if (italyCheck.isChecked()) {
+                    formationChoices.add(italyCheck.getText().toString());
+                }
+                if (spainCheck.isChecked()) {
+                    formationChoices.add(spainCheck.getText().toString());
+                }
+
+                // country selection
+                String country = countrySpinner.getSelectedItem().toString();
+
+                // compose info
+                String info = name
+                        + SPACE + surname
+                        + (formationChoices.isEmpty() ? EMPTY : SPACE + formationChoices)
+                        + SPACE + country;
+
+                Toast.makeText(getBaseContext(), "Saved" + SPACE + info, Toast.LENGTH_LONG).show();
+
+            }
+        });
+        layout.addView(saveButton);
 
 //        setContentView(R.layout.activity_main);
         setContentView(layout);
     }
+
+//    @Override
+//    public void onClick(View view) {
+//        if (view.getId() == sendButton.getId()) {
+//            // Popup
+//            Toast.makeText(this, "Hello Send", Toast.LENGTH_LONG).show();
+//        }
+//
+//        if (view.getId() == saveButton.getId()) {
+//            // Popup
+//            Toast.makeText(this, "Hello Save", Toast.LENGTH_LONG).show();
+//        }
+//    }
 }
