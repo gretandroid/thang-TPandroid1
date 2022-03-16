@@ -19,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tpandroid1.model.PersonInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     public static final int PADDING_BOTTOM= 20;
     public static final String SPACE = " ";
     public static final String EMPTY = "";
+
+    // fake storage
+    List<PersonInfo> personInfos = new ArrayList<>();
+
     private LinearLayout layout;
 
     // surname
@@ -49,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout formationLayout;
     private TextView formationLabel;
     private LinearLayout formationCheckLayout;
+    private List<CheckBox> formationChecks = new ArrayList<>();
     private CheckBox englishCheck;
     private CheckBox frenchCheck;
     private CheckBox italyCheck;
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     // marriage status
     private LinearLayout marriageLayout;
+    private List<RadioButton> marriageRadios= new ArrayList<>();
     private TextView marriageLabel;
     private RadioGroup marriageGroup;
     private RadioButton marriedRadio;
@@ -139,9 +147,13 @@ public class MainActivity extends AppCompatActivity {
         spainCheck = new CheckBox(this);
         spainCheck.setText(R.string.spanish);
         formationCheckLayout.addView(englishCheck);
+        formationChecks.add(englishCheck);
         formationCheckLayout.addView(frenchCheck);
+        formationChecks.add(frenchCheck);
         formationCheckLayout.addView(italyCheck);
+        formationChecks.add(italyCheck);
         formationCheckLayout.addView(spainCheck);
+        formationChecks.add(spainCheck);
         formationCheckLayout.setLayoutParams(PARAMS_MATCH_HORIZONTAL);
 
         formationLayout.addView(formationLabel);
@@ -162,12 +174,16 @@ public class MainActivity extends AppCompatActivity {
         marriageGroup.setPadding(PADDING_LEFT, PADDING_TOP, PADDING_RIGHT, 0);
 
         marriedRadio = new RadioButton(this);
+        marriageRadios.add(marriedRadio);
         marriedRadio.setText(R.string.married);
         singleRadio = new RadioButton(this);
+        marriageRadios.add(singleRadio);
         singleRadio.setText(R.string.single);
         divorcedRadio = new RadioButton(this);
+        marriageRadios.add(divorcedRadio);
         divorcedRadio.setText(R.string.divorced);
         widowerRadio = new RadioButton(this);
+        marriageRadios.add(widowerRadio);
         widowerRadio.setText(R.string.widowner);
         marriageGroup.addView(marriedRadio);
         marriageGroup.addView(singleRadio);
@@ -246,19 +262,20 @@ public class MainActivity extends AppCompatActivity {
 
                 // formation choices
                 List<String> formationChoices = new ArrayList<>();
-                if (englishCheck.isChecked()) {
-                    formationChoices.add(englishCheck.getText().toString());
-                }
-                if (frenchCheck.isChecked()) {
-                    formationChoices.add(frenchCheck.getText().toString());
-                }
-                if (italyCheck.isChecked()) {
-                    formationChoices.add(italyCheck.getText().toString());
-                }
-                if (spainCheck.isChecked()) {
-                    formationChoices.add(spainCheck.getText().toString());
+                for(CheckBox choice : formationChecks) {
+                    if (choice.isChecked()) {
+                        formationChoices.add(choice.getText().toString());
+                    }
                 }
 
+                // marriage status
+                String marriageStatus = EMPTY;
+                for (RadioButton choice : marriageRadios) {
+                    if (choice.isChecked()) {
+                        marriageStatus = choice.getText().toString();
+                        break;
+                    }
+                }
                 // country selection
                 String country = countrySpinner.getSelectedItem().toString();
 
@@ -266,19 +283,46 @@ public class MainActivity extends AppCompatActivity {
                 String info = name
                         + SPACE + surname
                         + (formationChoices.isEmpty() ? EMPTY : SPACE + formationChoices)
+                        + SPACE + marriageStatus
                         + SPACE + country;
 
-                Toast.makeText(getBaseContext(), "Saved" + SPACE + info, Toast.LENGTH_LONG).show();
+                // create an instant of PersonInfo then fill info
+                PersonInfo personInfo = new PersonInfo();
+                personInfo.setSurname(surname);
+                personInfo.setName(name);
+                personInfo.addFormations(formationChoices);
+                personInfo.setMarriageStatus(marriageStatus);
+                personInfo.setCountry(country);
+
+                // add newly created person info into storage
+                personInfos.add(personInfo);
+
+                // show a popup
+                Toast.makeText(getBaseContext(), "Saved" + personInfo.toString(), Toast.LENGTH_LONG).show();
 
                 // log debug
-                Log.d("Resultat", info);
+                Log.d("Resultat", personInfos.toString());
 
+                // clear fill info on views
+                clearUI();
             }
         });
         layout.addView(saveButton);
 
 //        setContentView(R.layout.activity_main);
         setContentView(layout);
+    }
+
+    private void clearUI() {
+        surnameText.setText(EMPTY);
+        nameText.setText(EMPTY);
+        formationChecks.forEach(checkBox -> checkBox.setChecked(false));
+        marriageRadios.forEach(radioButton -> radioButton.setChecked(false));
+        countrySpinner.setSelection(0);
+        dateText.setText(EMPTY);
+
+        // default focus
+        surnameText.requestFocus();
     }
 
 //    @Override
