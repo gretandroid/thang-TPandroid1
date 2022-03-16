@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class PersonInfo {
     private List<String> formations = new ArrayList<>();
     private String marriageStatus;
     private String country;
-    private LocalDate date;
+    private Date date;
 
     public String getSurname() {
         return surname;
@@ -59,11 +60,11 @@ public class PersonInfo {
         this.country = country;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

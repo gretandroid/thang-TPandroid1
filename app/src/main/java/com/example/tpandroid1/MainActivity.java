@@ -21,7 +21,11 @@ import android.widget.Toast;
 
 import com.example.tpandroid1.model.PersonInfo;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 //public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int PADDING_BOTTOM= 20;
     public static final String SPACE = " ";
     public static final String EMPTY = "";
+    public static DateFormat DATE_FORMATER = new SimpleDateFormat("dd/MM/yyyy");
+
 
     // fake storage
     List<PersonInfo> personInfos = new ArrayList<>();
@@ -262,11 +268,17 @@ public class MainActivity extends AppCompatActivity {
 
                 // formation choices
                 List<String> formationChoices = new ArrayList<>();
-                for(CheckBox choice : formationChecks) {
+//                for(CheckBox choice : formationChecks) {
+//                    if (choice.isChecked()) {
+//                        formationChoices.add(choice.getText().toString());
+//                    }
+//                }
+                formationChecks.forEach( choice -> {
                     if (choice.isChecked()) {
                         formationChoices.add(choice.getText().toString());
                     }
-                }
+                });
+
 
                 // marriage status
                 String marriageStatus = EMPTY;
@@ -278,6 +290,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // country selection
                 String country = countrySpinner.getSelectedItem().toString();
+
+                // date
+                String dateString = dateText.getText().toString();
+                Date date = null;
+                try {
+                    date = (Date) DATE_FORMATER.parse(dateString);
+                } catch (ParseException e) {
+                    // Do nothing
+                }
 
                 // compose info
                 String info = name
@@ -293,6 +314,7 @@ public class MainActivity extends AppCompatActivity {
                 personInfo.addFormations(formationChoices);
                 personInfo.setMarriageStatus(marriageStatus);
                 personInfo.setCountry(country);
+                personInfo.setDate(date);
 
                 // add newly created person info into storage
                 personInfos.add(personInfo);
