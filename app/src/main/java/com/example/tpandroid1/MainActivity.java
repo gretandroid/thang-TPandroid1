@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int PADDING_BOTTOM= 20;
     public static final String SPACE = " ";
     public static final String EMPTY = "";
+    public static final int DEFAULT_COUNTRY_INDEX = 0;
     public static DateFormat DATE_FORMATER = new SimpleDateFormat("dd/MM/yyyy");
 
 
@@ -301,11 +302,11 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // compose info
-                String info = name
-                        + SPACE + surname
-                        + (formationChoices.isEmpty() ? EMPTY : SPACE + formationChoices)
-                        + SPACE + marriageStatus
-                        + SPACE + country;
+//                String info = name
+//                        + SPACE + surname
+//                        + (formationChoices.isEmpty() ? EMPTY : SPACE + formationChoices)
+//                        + SPACE + marriageStatus
+//                        + SPACE + country;
 
                 // create an instant of PersonInfo then fill info
                 PersonInfo personInfo = new PersonInfo();
@@ -340,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
         nameText.setText(EMPTY);
         formationChecks.forEach(checkBox -> checkBox.setChecked(false));
         marriageRadios.forEach(radioButton -> radioButton.setChecked(false));
-        countrySpinner.setSelection(0);
+        countrySpinner.setSelection(DEFAULT_COUNTRY_INDEX);
         dateText.setText(EMPTY);
 
         // default focus

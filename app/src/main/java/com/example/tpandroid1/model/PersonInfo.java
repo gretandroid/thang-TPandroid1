@@ -16,6 +16,10 @@ public class PersonInfo {
     private String country;
     private Date date;
 
+    public PersonInfo() {
+        super();
+    }
+
     public String getSurname() {
         return surname;
     }
