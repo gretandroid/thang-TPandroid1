@@ -9,10 +9,11 @@ import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 import static com.example.tpandroid1.R.array.countries;
 import static com.example.tpandroid1.R.drawable.student;
+import static java.util.Arrays.asList;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,10 +28,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
 //        implements View.OnClickListener
 {
-
+    private static final String TAG = "MyActivity";
     public static final String COLON = " :";
     // layout params
     public static final LayoutParams PARAMS_MATCH_HORIZONTAL = new LayoutParams(
@@ -85,7 +89,14 @@ public class MainActivity extends AppCompatActivity
     // send button
     private Button sendButton;
 
-    private Button button1;
+    private Button saveButton;
+
+
+    // formations
+    List<String> formations = asList("Allemand", "Anglais", "Français", "Italien");
+
+    // personnes
+    List<Personne> personnes = new ArrayList<>();
 
 
     @Override
@@ -104,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         LinearLayout identificationLayout = new LinearLayout(this);
         lastNameTextView = new TextView(this);
         lastNameTextView.setText("Nom");
-        identificationLayout.addView(lastNameTextView);
+        globalLayout.addView(lastNameTextView);
 
         lastNameEditText = new EditText(this);
         globalLayout.addView(lastNameEditText);
@@ -199,29 +210,45 @@ public class MainActivity extends AppCompatActivity
         sendButton = new Button(this);
         sendButton.setText("envoyer");
 //        sendButton.setOnClickListener(this);
-        sendButton.setOnClickListener(
-                new OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        makeText(getBaseContext(),
-                                "information etudiant envoyé",
-                                LENGTH_LONG).show();
-                    }
-                }
-
-        );
+        sendButton.setOnClickListener(this::onClickSendButton);
         sendButton.setId(Integer.valueOf(1));
         globalLayout.addView(sendButton);
 
 
-        button1 = new Button(this);
-        button1.setText("enregistrer");
+        saveButton = new Button(this);
+        saveButton.setText("enregistrer");
 //        button1.setOnClickListener(this);
-        button1.setId(Integer.valueOf(2));
-        globalLayout.addView(button1);
+//        saveButton.setId(Integer.valueOf(2));
+        saveButton.setOnClickListener(this::onClickSaveButton);
+        globalLayout.addView(saveButton);
 
         // affiche la UI
         setContentView(globalLayout);
+    }
+
+    Integer generateNewPersonneId() {
+        return personnes.size();
+    }
+
+    private void onClickSaveButton(View view) {
+        List<String> personneFormations = new ArrayList<String>();
+        if (englishCheckBox.isSelected()) personneFormations.add("Anglais");
+        if (germanCheckBox.isSelected()) personneFormations.add("Allemand");
+        if (frenchCheckBox.isSelected()) personneFormations.add("Français");
+        if (italianCheckBox.isSelected()) personneFormations.add("Italien");
+        Personne p = new Personne(generateNewPersonneId(),
+                fistNameEditText.getText().toString(),
+                lastNameEditText.getText().toString(),
+                personneFormations,
+                countrySpinner.getSelectedItem().toString());
+        personnes.add(p);
+        Log.d(TAG, String.format("onClickSaveButton: %s list size %d new id %d", p, personnes.size(), generateNewPersonneId()));
+    }
+
+    private void onClickSendButton(View view) {
+        makeText(getBaseContext(),
+                "information etudiant envoyé",
+                LENGTH_LONG).show();
     }
 
 //    @Override

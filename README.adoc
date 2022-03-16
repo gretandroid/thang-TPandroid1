@@ -1,5 +1,6 @@
 = TRAVAUX PRATIQUES ANDROID 1
 
+
 == 1) Creez un projet android que l’on nomme TPandroid1 avec une empty activity
 https://github.com/gretandroid/thang-TPandroid1/tree/0fcb46adb5ed727f67a05fc3f65cd1f486b8369f
 
@@ -34,3 +35,6 @@ le gradle script sert à configurer et construire le projet android.
 
 
 == 4) EN UTILISANT DES LINEARLAYOUT REALISEZ L’ECRAN SUIVANT, ET INTERNATIONALISEZ l’APPLICATION AVEC UNE VERSION ANGLAISE
+
+
+== EXERCICE 1: En partant de l’activity realise hier, enlever l’image et ajouter un bouton qui permet de recuperer la liste des informations saisies et les afficher dans le LOGCAT.
